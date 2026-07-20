@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: oklch(0.995 0.003 30);
+  --color-foreground: oklch(0.22 0.02 260);
+  --color-muted: oklch(0.97 0.006 260);
+  --color-muted-foreground: oklch(0.5 0.02 260);
+  --color-border: oklch(0.92 0.008 260);
+  --color-card: oklch(1 0 0);
+
+  --color-primary: oklch(0.48 0.19 25);
+  --color-primary-glow: oklch(0.62 0.22 25);
+  --color-primary-foreground: oklch(0.99 0 0);
+
+  --color-accent: oklch(0.94 0.04 25);
+  --color-accent-foreground: oklch(0.35 0.15 25);
+
+  --color-success: oklch(0.65 0.16 150);
+  --color-warning: oklch(0.75 0.17 70);
+  --color-danger: oklch(0.55 0.24 25);
+
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+
+  --shadow-elegant:
+    0 10px 30px -12px color-mix(in oklab, oklch(0.48 0.19 25) 22%, transparent);
+  --shadow-card: 0 4px 20px -8px oklch(0.2 0.02 260 / 0.12);
+}
+
+:root {
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-glow) 100%
+  );
+  --gradient-hero: radial-gradient(
+      1200px 500px at 10% -10%,
+      color-mix(in oklab, var(--color-primary-glow) 22%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 100% 20%,
+      color-mix(in oklab, var(--color-primary) 18%, transparent),
+      transparent 60%
+    );
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility glass {
+  background: color-mix(in oklab, white 70%, transparent);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid color-mix(in oklab, white 60%, transparent);
+}
+
+@utility text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-hero {
+  background-image: var(--gradient-hero);
+}
